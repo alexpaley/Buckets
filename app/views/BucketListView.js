@@ -1,6 +1,6 @@
 BucketListView = Backbone.View.extend({
 
-  el:'div.sidebar',
+  className: 'sidebar nav nav-list',
 
   initialize: function() {
     this.collection.on("add remove", this.render, this);
@@ -10,7 +10,7 @@ BucketListView = Backbone.View.extend({
                         "<a class='btn plus' href='#''><i class='icon-plus'></i></a>"),
 
   events: {
-    'click .sidebar .btn.save': 'addBucket',
+    'click .btn.save': 'addBucket',
 
     'click .btn.plus': function() {
       console.log('button clicked');
@@ -23,18 +23,39 @@ BucketListView = Backbone.View.extend({
                               "<button type='cancel' class='btn cancel'>cancel</button>" +
                             "</div>" +
                           "</form>");
-    }
+    },
+
+    'click .bucket': 'highlightBucket',
+
+    'click .icon-remove': 'deleteBucket'
   },
 
-   addBucket: function() {
+  deleteBucket: function(event) {
+    var $target = $(event.target);
+    $target.parent().remove();
+  },
+
+  highlightBucket: function(event) {
+    var $target = $(event.target);
+    $target.parent().toggleClass('active');
+  },
+
+  addBucket: function() {
     $('.sidebar').removeClass('inputting');
     this.collection.add({bucketName: $('.bucket-name').val(), emails: $('.bucket-email').val()});
   },
 
   render: function() {
     this.$el.children().detach();
-    return this.$el.html(this.collection.map(function(bucket) {
-      return new BucketView({model: bucket}).render();
-    }));
+    return this.$el.html(
+      [this.template()].concat(
+        this.collection.map(function(bucket) {
+          return new BucketView({model: bucket}).render();
+        })
+      )
+    );
+    // return this.$el.html(this.collection.map(function(bucket) {
+    //   return new BucketView({model: bucket}).render();
+    // }));
   }
 });
