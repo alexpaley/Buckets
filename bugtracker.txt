@@ -1,0 +1,2 @@
+Bugs:
+Deleting a bucket: When you delete a bucket, the bucket is removed from the screen but the model is not destroyed. So when you click "save" again, the bucket that was supposed to be deleted is re-rendered to the screen.

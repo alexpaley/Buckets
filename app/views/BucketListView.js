@@ -9,25 +9,37 @@ BucketListView = Backbone.View.extend({
   template: _.template("<li class='nav-header header-font'>Your Buckets</li>" +
                         "<a class='btn plus' href='#''><i class='icon-plus'></i></a>"),
 
-  events: {
-    'click .btn.save': 'addBucket',
-
-    'click .btn.plus': function() {
-      console.log('button clicked');
-      $('.sidebar').toggleClass('inputting');
-      $('.btn.plus').after("<form class='form-horizontal add-bucket'>" +
+  editTemplate: _.template("<form class='form-horizontal add-bucket'>" +
                             "<div class='control-group'>" +
                               "<input class='bucket-name' type='text' placeholder='bucket name'>" +
                               "<textarea class='bucket-email' type='text' placeholder='bucket emails'></textarea>" +
                               "<button type='save' class='btn save'>save</button>" +
                               "<button type='cancel' class='btn cancel'>cancel</button>" +
                             "</div>" +
-                          "</form>");
+                          "</form>"),
+
+  events: {
+    'click .btn.save': 'addBucket',
+
+    'click .btn.plus': function() {
+      $('.sidebar').toggleClass('inputting');
+      this.renderForm();
     },
 
     'click .bucket': 'highlightBucket',
 
-    'click .icon-remove': 'deleteBucket'
+    'click .icon-remove': 'deleteBucket',
+
+    'click .icon-pencil': 'editBucket'
+  },
+
+  editBucket: function(event) {
+    // $('.sidebar').removeClass('inputting');
+    // this.$el.html(this.model;
+  },
+
+  renderForm: function() {
+    this.$('.btn.plus').after(this.editTemplate());
   },
 
   deleteBucket: function(event) {
