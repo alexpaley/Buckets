@@ -21,6 +21,8 @@ BucketListView = Backbone.View.extend({
   events: {
     'click .btn.save': 'addBucket',
 
+    'click .btn.cancel': 'removeForm',
+
     'click .btn.plus': function() {
       $('.sidebar').toggleClass('inputting');
       this.renderForm();
@@ -53,8 +55,13 @@ BucketListView = Backbone.View.extend({
   },
 
   addBucket: function() {
-    $('.sidebar').removeClass('inputting');
+    $('.sidebar').toggleClass('inputting');
     this.collection.add({bucketName: $('.bucket-name').val(), emails: $('.bucket-email').val()});
+  },
+
+  removeForm: function() {
+    $('.form-horizontal').remove();
+    $('.sidebar').toggleClass('inputting');
   },
 
   render: function() {
