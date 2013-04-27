@@ -23,10 +23,7 @@ BucketListView = Backbone.View.extend({
 
     'click .btn.cancel': 'removeForm',
 
-    'click .btn.plus': function() {
-      $('.sidebar').toggleClass('inputting');
-      this.renderForm();
-    },
+    'click .btn.plus': 'renderForm',
 
     'click .bucket': 'highlightBucket',
 
@@ -41,6 +38,7 @@ BucketListView = Backbone.View.extend({
   },
 
   renderForm: function() {
+    $('.sidebar').toggleClass('inputting');
     this.$('.btn.plus').after(this.editTemplate());
   },
 
