@@ -4,7 +4,8 @@ AppView = Backbone.View.extend({
 
   render: function() {
     return this.$el.html(
-      new BucketListView({collection: this.model.get('bucketList')}).render()
+      new BucketListView({collection: this.model.get('bucketList')}).render(),
+      new FormView({collection: this.model.get('bucketList')})
     );
   }
 });

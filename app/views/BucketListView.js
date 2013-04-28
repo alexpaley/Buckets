@@ -3,48 +3,32 @@ BucketListView = Backbone.View.extend({
   className: 'sidebar nav nav-list',
 
   initialize: function() {
-    this.collection.on("add remove", this.render, this);
+    this.model = new Bucket();
+    this.collection = new BucketList();
+    this.formView = new FormView({model: this.model, collection: this.collection});
+    this.collection.on("add", this.appendBucket, this);
+    // this.collection.on("remove", this.remove, this);
+    console.log(this.form, this.model, this.collection);
   },
 
   template: _.template("<li class='nav-header header-font'>Your Buckets</li>" +
                         "<a class='btn plus' href='#''><i class='icon-plus'></i></a>"),
 
-  editTemplate: _.template("<form class='form-horizontal add-bucket'>" +
-                            "<div class='control-group'>" +
-                              "<input class='bucket-name' type='text' placeholder='bucket name'>" +
-                              "<textarea class='bucket-email' type='text' placeholder='bucket emails'></textarea>" +
-                              "<button type='save' class='btn save'>save</button>" +
-                              "<button type='cancel' class='btn cancel'>cancel</button>" +
-                            "</div>" +
-                          "</form>"),
-
   events: {
-    'click .btn.save': 'addBucket',
-
-    'click .btn.cancel': 'removeForm',
-
     'click .btn.plus': 'renderForm',
 
-    'click .bucket': 'highlightBucket',
-
-    'click .icon-remove': 'deleteBucket',
-
-    'click .icon-pencil': 'editBucket'
+    'click .bucket': 'highlightBucket'
   },
 
-  editBucket: function(event) {
-    // $('.sidebar').removeClass('inputting');
-    // this.$el.html(this.model;
+  appendBucket: function() {
+    var last_bucket = this.collection.at(this.collection.length - 1);
+    return this.$el.append(new BucketView({model: last_bucket}).render());
   },
 
   renderForm: function() {
     $('.sidebar').toggleClass('inputting');
-    this.$('.btn.plus').after(this.editTemplate());
-  },
-
-  deleteBucket: function(event) {
-    var $target = $(event.target);
-    $target.parent().remove();
+    this.$('.btn.plus').after(this.formView.render());
+    console.log(this.formView, this.model, this.collection);
   },
 
   highlightBucket: function(event) {
@@ -52,17 +36,8 @@ BucketListView = Backbone.View.extend({
     $target.parent().toggleClass('active');
   },
 
-  addBucket: function() {
-    $('.sidebar').toggleClass('inputting');
-    this.collection.add({bucketName: $('.bucket-name').val(), emails: $('.bucket-email').val()});
-  },
-
-  removeForm: function() {
-    $('.form-horizontal').remove();
-    $('.sidebar').toggleClass('inputting');
-  },
-
   render: function() {
+    console.log('In this BucketListView render function');
     this.$el.children().detach();
     return this.$el.html(
       [this.template()].concat(
@@ -71,8 +46,5 @@ BucketListView = Backbone.View.extend({
         })
       )
     );
-    // return this.$el.html(this.collection.map(function(bucket) {
-    //   return new BucketView({model: bucket}).render();
-    // }));
   }
 });
