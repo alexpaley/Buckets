@@ -7,7 +7,6 @@ BucketListView = Backbone.View.extend({
     this.collection = new BucketList();
     this.formView = new FormView({model: this.model, collection: this.collection});
     this.collection.on("add", this.appendBucket, this);
-    // this.collection.on("remove", this.remove, this);
     console.log(this.form, this.model, this.collection);
   },
 
@@ -17,7 +16,9 @@ BucketListView = Backbone.View.extend({
   events: {
     'click .btn.plus': 'renderForm',
 
-    'click .bucket': 'highlightBucket'
+    'click .bucket': 'highlightBucket',
+
+    'click .icon-pencil': 'editBucket'
   },
 
   appendBucket: function() {
@@ -36,15 +37,15 @@ BucketListView = Backbone.View.extend({
     $target.parent().toggleClass('active');
   },
 
+  editBucket: function(event) {
+    console.log('In editBucket');
+    // $('.sidebar').removeClass('inputting');
+    // this.$el.html(this.model;
+  },
+
   render: function() {
     console.log('In this BucketListView render function');
     this.$el.children().detach();
-    return this.$el.html(
-      [this.template()].concat(
-        this.collection.map(function(bucket) {
-          return new BucketView({model: bucket}).render();
-        })
-      )
-    );
+    return this.$el.html(this.template());
   }
 });

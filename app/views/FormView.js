@@ -24,7 +24,6 @@ FormView = Backbone.View.extend({
   },
 
   removeForm: function() {
-    //TODO: Is it better to use HIDE() or REMOVE() here????
     $('.form-horizontal').remove();
     $('.sidebar').toggleClass('inputting');
   },

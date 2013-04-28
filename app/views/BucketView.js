@@ -12,15 +12,7 @@ BucketView = Backbone.View.extend({
                        "</a>"),
 
   events: {
-    'click .icon-remove': 'deleteBucket',
-
-    'click .icon-pencil': 'editBucket'
-  },
-
-  editBucket: function(event) {
-    console.log('In editBucket');
-    // $('.sidebar').removeClass('inputting');
-    // this.$el.html(this.model;
+    'click .icon-remove': 'deleteBucket'
   },
 
   deleteBucket: function(event) {
