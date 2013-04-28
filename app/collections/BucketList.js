@@ -1,4 +1,8 @@
 BucketList = Backbone.Collection.extend({
+  model: Bucket,
 
-  model: Bucket
+  addNew: function() {
+    this.trigger('addNew', this);
+  }
+
 });

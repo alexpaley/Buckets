@@ -1,20 +1,27 @@
 FormView = Backbone.View.extend({
 
   initialize: function() {
-    this.editing = !!this.model;
-    console.log(this.editing);
-    this.model = this.model || new Bucket();
-    this.model.set({editing: this.editing});
-    if(this.editing) {
-      this.model.set({bucketName: '', emails: ''});
-    }
+    this.collection.on('addNew', function() {
+      this.model = new Bucket();
+    }, this);
+
+    this.collection.on('edit', function(model) {
+      this.model = model;
+      this.model.set('editing', true);
+      $('.sidebar').toggleClass('inputting');
+      $('.btn.plus').after(this.render().html());
+    }, this);
   },
 
   template: _.template("<form class='form-horizontal add-bucket'>" +
                           "<div class='control-group'>" +
                             "<input class='bucket-name' type='text' placeholder='bucket name' value=<%=bucketName%>>" +
                             "<textarea class='bucket-email' type='text' placeholder='bucket emails'><%=emails%></textarea>" +
-                            "<button type='save' class='btn save'><% if(this.editing) { print('edit'); } else { print('add'); } %></button>" +
+                            '<% if(editing) { %>' +
+                              '<button type="edit" class="btn edit">edit</button>' +
+                            '<% } else { %>' +
+                              '<button type="save" class="btn save">save</button>' +
+                            '<% } %>' +
                             "<button type='cancel' class='btn cancel'>cancel</button>" +
                           "</div>" +
                         "</form>"),
@@ -39,12 +46,12 @@ FormView = Backbone.View.extend({
   },
 
   editBucket: function() {
-    this.model.set({bucketName: $('.bucket-name').val(), emails: $('.bucket-email').val()});
+    this.model.set({bucketName: this.$('.bucket-name').val(), emails: this.$('.bucket-email').val()});
+    this.removeForm();
   },
 
   render: function() {
     this.$el.children().detach();
-    console.log(this.model.attributes);
     return this.$el.html(this.template(this.model.attributes));
   }
 });

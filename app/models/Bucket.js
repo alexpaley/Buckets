@@ -2,7 +2,8 @@ Bucket = Backbone.Model.extend({
 
   defaults: {
     bucketName: '',
-    emails: ''
+    emails: '',
+    editing: false
   },
 
   edit: function() {

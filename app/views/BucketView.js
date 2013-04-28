@@ -29,9 +29,6 @@ BucketView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.dropzone({ url: "/file/post" });
-    console.log($('li.bucket').html());
-    $('li.bucket').dropzone({url: "/file/post"});
     return this.$el.html(this.template(this.model.attributes));
   }
 });

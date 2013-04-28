@@ -3,15 +3,9 @@ BucketListView = Backbone.View.extend({
   className: 'sidebar nav nav-list',
 
   initialize: function() {
-    // this.model      = new Bucket();
     this.collection = new BucketList();
-    // this.formView   = new FormView({model: this.model, collection: this.collection});
-    // this.renderForm();
+    this.formView   = new FormView({model: new Bucket(), collection: this.collection});
     this.collection.on("add", this.appendBucket, this);
-    this.collection.on("edit", function(model) {
-      console.log(this.model, model);
-      this.renderForm(model);
-    }, this);
   },
 
   template: _.template("<li class='nav-header header-font'>Your Buckets</li>" +
@@ -19,6 +13,7 @@ BucketListView = Backbone.View.extend({
 
   events: {
     'click .btn.plus': function(e) {
+      this.collection.addNew();
       this.renderForm();
     },
 
@@ -26,13 +21,12 @@ BucketListView = Backbone.View.extend({
   },
 
   appendBucket: function() {
-    var last_bucket = this.collection.at(this.collection.length - 1);
-    return this.$el.append(new BucketView({model: last_bucket}).render());
+    return this.$el.append(new BucketView({model: this.collection.last()}).render());
   },
 
   renderForm: function(model) {
     $('.sidebar').toggleClass('inputting');
-    this.$('.btn.plus').after((new FormView({model: model, collection: this.collection})).render());
+    this.$('.btn.plus').after(this.formView.render());
   },
 
   highlightBucket: function(event) {
