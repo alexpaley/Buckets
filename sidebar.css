@@ -8,6 +8,10 @@ a:hover {
   color: black;
 }
 
+/*.bucket a {
+  height: 75px;
+}*/
+
 button[type="save"],
 button[type="cancel"],
 button[type="edit"] {
@@ -32,11 +36,11 @@ button[type="cancel"]:hover {
 }
 
 button[type="edit"] {
-  background-color: #34495E;
+  background-color: #3498DB;
 }
 
 button[type="edit"]:hover {
-  background-color: #2C3E50;
+  background-color: #2980B9;
 }
 
 input {

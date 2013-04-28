@@ -1,9 +1,11 @@
 BucketView = Backbone.View.extend({
 
   tagName: 'li',
+  className: 'bucket',
 
   initialize: function() {
     this.model.on("destroy", this.remove, this);
+    this.model.on("change", this.render, this);
   },
 
   template: _.template("<a href='#'>" +
@@ -15,21 +17,21 @@ BucketView = Backbone.View.extend({
   events: {
     'click .icon-remove': 'deleteBucket',
 
-    'click .icon-pencil': 'editBucket'
+    'click .icon-pencil': 'triggerEditEvent'
   },
 
   deleteBucket: function(event) {
-    console.log('X button clicked');
     this.model.destroy();
   },
 
-  editBucket: function(event) {
+  triggerEditEvent: function(event) {
     this.model.edit();
   },
 
   render: function() {
-    this.$el.addClass('bucket');
-    console.log('In the BucketView render');
+    this.$el.dropzone({ url: "/file/post" });
+    console.log($('li.bucket').html());
+    $('li.bucket').dropzone({url: "/file/post"});
     return this.$el.html(this.template(this.model.attributes));
   }
 });

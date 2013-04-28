@@ -3,14 +3,14 @@ BucketListView = Backbone.View.extend({
   className: 'sidebar nav nav-list',
 
   initialize: function() {
-    this.model      = new Bucket();
+    // this.model      = new Bucket();
     this.collection = new BucketList();
-    this.formView   = new FormView({model: this.model, collection: this.collection});
-
+    // this.formView   = new FormView({model: this.model, collection: this.collection});
+    // this.renderForm();
     this.collection.on("add", this.appendBucket, this);
-    this.collection.on("edit", function() {
-      this.renderForm();
-      $('.btn.save').replaceWith("<button type='edit' class='btn edit'>edit</button>");
+    this.collection.on("edit", function(model) {
+      console.log(this.model, model);
+      this.renderForm(model);
     }, this);
   },
 
@@ -18,7 +18,9 @@ BucketListView = Backbone.View.extend({
                         "<a class='btn plus' href='#''><i class='icon-plus'></i></a>"),
 
   events: {
-    'click .btn.plus': 'renderForm',
+    'click .btn.plus': function(e) {
+      this.renderForm();
+    },
 
     'click .bucket': 'highlightBucket'
   },
@@ -28,10 +30,9 @@ BucketListView = Backbone.View.extend({
     return this.$el.append(new BucketView({model: last_bucket}).render());
   },
 
-  renderForm: function() {
+  renderForm: function(model) {
     $('.sidebar').toggleClass('inputting');
-    this.$('.btn.plus').after(this.formView.render());
-    // console.log(this.formView, this.model, this.collection);
+    this.$('.btn.plus').after((new FormView({model: model, collection: this.collection})).render());
   },
 
   highlightBucket: function(event) {
@@ -40,7 +41,6 @@ BucketListView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log('In this BucketListView render function');
     this.$el.children().detach();
     return this.$el.html(this.template());
   }

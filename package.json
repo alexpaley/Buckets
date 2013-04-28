@@ -1,0 +1,20 @@
+{
+  "name": "Buckets",
+  "version": "0.0.0",
+  "description": "Chrome extension for drag-and-drop transfer of browser content between friends",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~3.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexpaley/Buckets.git"
+  },
+  "author": "Alex Paley",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
