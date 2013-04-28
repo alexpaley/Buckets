@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Get Buckets</title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Flat-UI/css/flat-ui.css">
+    <link rel="stylesheet" href="sidebar.css">
+  </head>
+  <body class="row-fluid">
+    <form id="dropTarget" action="/target" class="dropzone"></form>
+
+    <script src="core/jquery.js"></script>
+    <script src="core/underscore.js"></script>
+    <script src="core/backbone.js"></script>
+    <script src="core/dropzone.js"></script>
+
+    <script src="app/models/App.js"></script>
+    <script src="app/models/Bucket.js"></script>
+
+    <script src="app/collections/BucketList.js"></script>
+
+    <script src="app/views/AppView.js"></script>
+    <script src="app/views/BucketView.js"></script>
+    <script src="app/views/BucketListView.js"></script>
+    <script src="app/views/FormView.js"></script>
+
+    <script>
+      $(function() {
+        var bucketList = new BucketList();
+        var app        = new App({ bucketList: bucketList });
+        var appView    = new AppView({model: app});
+
+        $('body').append(appView.render());
+      });
+    </script>
+    <script src="DropLogic.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+a {
+  background-color: #7F8C8D;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+.dropzone {
+  /*background: url('bucket.png') no-repeat;
+  z-index: 1;*/
+  position: fixed;
+  right: 60%;
+  top: 50%;
+  text-align: center;
+}
+
+/*.bucket a {
+  height: 75px;
+}*/
+
+button[type="save"],
+button[type="cancel"],
+button[type="edit"] {
+  border-radius: 0;
+  width: 50%;
+}
+
+button[type="save"] {
+  background-color: #1ABC9C;
+}
+
+button[type="save"]:hover {
+  background-color: #16A085;
+}
+
+button[type="cancel"] {
+  background-color: #E74C3C;
+}
+
+button[type="cancel"]:hover {
+  background-color: #C0392B;
+}
+
+button[type="edit"] {
+  background-color: #3498DB;
+}
+
+button[type="edit"]:hover {
+  background-color: #2980B9;
+}
+
+input {
+  width: 100%;
+  height: 30px;
+}
+
+input[type="text"] {
+  height: 50px;
+  border-radius: 0;
+  margin: 0;
+  background-color: #BDC3C7;
+  border: 1px solid #748081;
+}
+
+input[type="text"]:active {
+  border: 1px solid #1ABC9C;
+}
+
+textarea {
+  border-radius: 0;
+  background-color: #BDC3C7;
+  border: 1px solid #748081;
+  width: 100%;
+}
+
+input[type="text"] + textarea {
+  border-top: 0;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: black !important;
+}
+
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  z-index: 9999;
+  height: 100%;
+  background-color: #DBD7D9;
+  opacity: 1;
+}
+
+.header-font {
+  color: black;
+  text-align: center;
+}
+
+.add-bucket {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  margin: 0;
+}
+
+.inputting .add-bucket {
+  display: inline;
+  border-radius: 0;
+  margin-bottom: 0;
+  z-index: 1;
+}
+
+.btn.plus {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 258px;
+  border-radius: 0;
+}
+
+.inputting .btn.plus {
+  display: none;
+}
+
+.icon-plus {
+  margin: 3px 5px;
+}
+
+.bucket .icon-remove,
+.bucket .icon-pencil {
+  display: none;
+  float: right;
+  margin: 3px 5px;
+}
+
+.bucket.active .icon-remove,
+.bucket.active .icon-pencil {
+  display: inline;
+}
+
+.form-horizontal .control-group {
+  margin-bottom: 0;
+}
