@@ -17,11 +17,11 @@ FormView = Backbone.View.extend({
                           "<div class='control-group'>" +
                             "<input class='bucket-name' type='text' placeholder='bucket name' value=<%=bucketName%>>" +
                             "<textarea class='bucket-email' type='text' placeholder='bucket emails'><%=emails%></textarea>" +
-                            '<% if(editing) { %>' +
-                              '<button type="edit" class="btn edit">edit</button>' +
-                            '<% } else { %>' +
-                              '<button type="save" class="btn save">save</button>' +
-                            '<% } %>' +
+                            "<% if(editing) { %>" +
+                              "<button type='edit' class='btn edit'>edit</button>" +
+                            "<% } else { %>" +
+                              "<button type='save' class='btn save'>save</button>" +
+                            "<% } %>" +
                             "<button type='cancel' class='btn cancel'>cancel</button>" +
                           "</div>" +
                         "</form>"),

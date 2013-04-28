@@ -1,14 +1,10 @@
 var express = require('express');
+
 var app = express();
 
-app.use(express.bodyParser({ keepExtensions: true, uploadDir: __dirname + "/public/uploads" }));
-
-
-app.get('/file/post', function(req, res){
-  res.send('hello world');
+app.get('/', function(req, res) {
+  res.send([{bucketName: 'ADOG', emails: 'alex@alex.com'}, {bucketName: 'ADOG', emails: 'alex@alex.com'}]);
 });
 
 app.listen(3000);
-console.log("Express server listening on port " + app.get('port'));
-
-// url: "/file/post"
+console.log('Listening on port 3000...');

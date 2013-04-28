@@ -8,6 +8,19 @@ a:hover {
   color: black;
 }
 
+body {
+  background-color: #f4f4f4;
+}
+
+.dropzone {
+  /*background: url('bucket.png') no-repeat;
+  z-index: 1;*/
+  position: fixed;
+  right: 500px;
+  text-align: center;
+  margin-top: 30%;
+}
+
 /*.bucket a {
   height: 75px;
 }*/
