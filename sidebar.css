@@ -9,7 +9,8 @@ a:hover {
 }
 
 button[type="save"],
-button[type="cancel"] {
+button[type="cancel"],
+button[type="edit"] {
   border-radius: 0;
   width: 50%;
 }
@@ -28,6 +29,14 @@ button[type="cancel"] {
 
 button[type="cancel"]:hover {
   background-color: #C0392B;
+}
+
+button[type="edit"] {
+  background-color: #34495E;
+}
+
+button[type="edit"]:hover {
+  background-color: #2C3E50;
 }
 
 input {

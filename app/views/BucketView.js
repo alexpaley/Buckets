@@ -1,4 +1,5 @@
 BucketView = Backbone.View.extend({
+
   tagName: 'li',
 
   initialize: function() {
@@ -12,12 +13,18 @@ BucketView = Backbone.View.extend({
                        "</a>"),
 
   events: {
-    'click .icon-remove': 'deleteBucket'
+    'click .icon-remove': 'deleteBucket',
+
+    'click .icon-pencil': 'editBucket'
   },
 
   deleteBucket: function(event) {
     console.log('X button clicked');
     this.model.destroy();
+  },
+
+  editBucket: function(event) {
+    this.model.edit();
   },
 
   render: function() {
