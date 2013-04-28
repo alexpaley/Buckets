@@ -47,6 +47,7 @@ exports.updateBucket = function(req, res) {
     var bucket = req.body;
     console.log('Updating bucket: ' + id);
     console.log(JSON.stringify(bucket));
+    delete bucket._id;
     db.collection('buckets', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, bucket, {safe:true}, function(err, result) {
             if (err) {

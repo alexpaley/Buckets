@@ -9,7 +9,7 @@ FormView = Backbone.View.extend({
       this.model = model;
       this.model.set('editing', true);
       $('.sidebar').toggleClass('inputting');
-      $('.btn.plus').after(this.render().html());
+      $('.btn.plus').after(this.render());
     }, this);
   },
 
@@ -46,6 +46,7 @@ FormView = Backbone.View.extend({
   },
 
   editBucket: function() {
+    console.log('in edit bucket');
     this.model.set({bucketName: this.$('.bucket-name').val(), emails: this.$('.bucket-email').val()});
     this.model.save();
     this.removeForm();
@@ -53,6 +54,7 @@ FormView = Backbone.View.extend({
 
   render: function() {
     this.$el.children().detach();
-    return this.$el.html(this.template(this.model.attributes));
+    this.$el.html(this.template(this.model.attributes));
+    return this.el;
   }
 });

@@ -1,1 +1,1 @@
-Dropzone.options.dropTarget = { dictDefaultMessage: "DROP HERE" };
+Dropzone.options.dropTarget = { dictDefaultMessage: "DROP FILES HERE" };
