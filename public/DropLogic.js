@@ -1,7 +1,9 @@
-Dropzone.options.dropTarget = { dictDefaultMessage: "" };
+// var myDropzone = new Dropzone("#bucketImage", {
+//   url: "/target",
+//   dictDefaultMessage: "",
+//   previewsContainer: ".dropzone-previews"
+// });
 
-new Dropzone(document.body, {
-  previewsContainer: ".dropzone-previews",
-  url: '/target',
-  clickable: false
-});
+// myDropZone.on("complete", function(file) {
+
+// });

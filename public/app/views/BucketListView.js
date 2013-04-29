@@ -36,6 +36,12 @@ BucketListView = Backbone.View.extend({
     $target.parent().toggleClass('active');
   },
 
+  grabSelectedEmails: function() {
+    myDropZone.on("complete", function(file) {
+
+    });
+  },
+
   render: function() {
     this.$el.children().detach();
     return this.$el.html(this.template());

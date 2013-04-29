@@ -2,10 +2,6 @@ var fs         = require('fs'),
     mongo      = require('mongodb'),
     nodemailer = require("nodemailer");
 
-var Server     = mongo.Server,
-        DB     = mongo.Db,
-      BSON     = mongo.BSONPure;
-
 // var db;
 
 // module.exports = function(_db) {
