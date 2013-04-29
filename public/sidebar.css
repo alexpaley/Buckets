@@ -13,21 +13,34 @@ body {
 }
 
 .dropzone {
- /* background: url('bucket.png') no-repeat;
-  z-index: 1;*/
   position: fixed;
-  right: 60%;
-  top: 50%;
+  height: 100%;
+  width: 100%;
   text-align: center;
 }
 
-.dropzone .default.message {
+/*.dropzone .default.message {
+  position: fixed;
+  top: 50%;
+  left: 35%;
   color: #E74C3C;
-}
+}*/
 
 /*.bucket a {
   height: 75px;
 }*/
+
+#bucketImage {
+  cursor: pointer;
+  background: url('bucket_text.png') no-repeat;
+  position: relative;
+  height: 200px;
+  width: 100%;
+  text-align: center;
+  margin-top: 225px;
+  z-index: 1;
+  right: -450px;
+}
 
 button[type="save"],
 button[type="cancel"],

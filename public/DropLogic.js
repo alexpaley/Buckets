@@ -1,3 +1,9 @@
-Dropzone.options.dropTarget = { dictDefaultMessage: "DROP FILES HERE" };
+Dropzone.options.dropTarget = { dictDefaultMessage: "" };
 
-// Dropzone.on("error", function(file, message) { alert(message); });
+new Dropzone(document.body, {
+  previewsContainer: ".dropzone-previews",
+  url: '/target',
+  // You probably don't want the whole body
+  // to be clickable to select files
+  clickable: false
+});
