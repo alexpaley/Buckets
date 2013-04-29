@@ -1,1 +1,0 @@
-Dropzone.options.dropTarget = { dictDefaultMessage: "DROP HERE" };

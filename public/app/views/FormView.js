@@ -15,8 +15,8 @@ FormView = Backbone.View.extend({
 
   template: _.template("<form class='form-horizontal add-bucket'>" +
                           "<div class='control-group'>" +
-                            "<input class='bucket-name' type='text' placeholder='bucket name' value=<%=bucketName%>>" +
-                            "<textarea class='bucket-email' type='text' placeholder='bucket emails'><%=emails%></textarea>" +
+                            "<input class='bucket-name' type='text' placeholder='bucket name' value='<%-bucketName%>'>" +
+                            "<textarea class='bucket-email' type='text' placeholder='bucket emails (comma separated)'><%-emails%></textarea>" +
                             "<% if(editing) { %>" +
                               "<button type='edit' class='btn edit'>edit</button>" +
                             "<% } else { %>" +

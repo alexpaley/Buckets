@@ -33,13 +33,13 @@ body {
 #bucketImage {
   cursor: pointer;
   background: url('bucket_text.png') no-repeat;
-  position: relative;
+  position: fixed;
   height: 200px;
-  width: 100%;
-  text-align: center;
-  margin-top: 225px;
+  width: 200px;
+  margin-top: -100px;
   z-index: 1;
-  right: -450px;
+  top: 50%;
+  right: 50%;
 }
 
 button[type="save"],

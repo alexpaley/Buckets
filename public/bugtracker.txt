@@ -1,1 +1,7 @@
-Bugs:
+Bugs: The bucketName placeholder is not getting saved
+
+Sometimes, the buketListView never gets rendered from the database.
+
+only after you drop file does it return to normal.
+
+solved part of the problem with the open event on the database but now it happens every other time.
