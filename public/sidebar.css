@@ -13,12 +13,16 @@ body {
 }
 
 .dropzone {
-  /*background: url('bucket.png') no-repeat;
+ /* background: url('bucket.png') no-repeat;
   z-index: 1;*/
   position: fixed;
   right: 60%;
   top: 50%;
   text-align: center;
+}
+
+.dropzone .default.message {
+  color: #E74C3C;
 }
 
 /*.bucket a {
