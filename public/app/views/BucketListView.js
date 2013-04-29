@@ -3,6 +3,8 @@ BucketListView = Backbone.View.extend({
   className: 'sidebar nav nav-list',
 
   initialize: function() {
+    this.active = {};
+
     this.collection = new BucketList({url:'/'});
     this.formView   = new FormView({model: new Bucket(), collection: this.collection});
     this.collection.on("add", this.appendBucket, this);
@@ -32,14 +34,31 @@ BucketListView = Backbone.View.extend({
   },
 
   highlightBucket: function(event) {
-    var $target = $(event.target);
-    $target.parent().toggleClass('active');
+    var $target = $(event.currentTarget);
+
+    var id = $target.find('a').data('id');
+    if (this.active[id]) {
+      delete this.active[id];
+      $target.removeClass('active');
+    }
+    else {
+      this.active[id] = true;
+      $target.addClass('active');
+    }
+    this.grabSelectedEmails();
   },
 
   grabSelectedEmails: function() {
-    myDropZone.on("complete", function(file) {
+    var selected = this.active;
+    var emailArray = [];
 
+    this.collection.each(function(model) {
+      if(selected[model.attributes._id]) {
+        emailArray.push(model.attributes.emails);
+      }
     });
+    console.log(emailArray);
+    return emailArray;
   },
 
   render: function() {

@@ -8,7 +8,7 @@ BucketView = Backbone.View.extend({
     this.model.on("change", this.render, this);
   },
 
-  template: _.template("<a href='#'>" +
+  template: _.template("<a href='#' data-id='<%= _id %>'>" +
                          "<i class='icon-user icon-white'></i>" + ' ' + '<%= bucketName %>' +
                          "<i class='icon-pencil icon-white'></i>" +
                          "<i class='icon-remove icon-white'></i>" +
