@@ -1,5 +1,5 @@
 BucketList = Backbone.Collection.extend({
-  idAttribute: "_id",
+  // idAttribute: "_id",
 
   model: Bucket,
 

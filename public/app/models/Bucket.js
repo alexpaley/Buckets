@@ -1,6 +1,6 @@
 Bucket = Backbone.Model.extend({
 
-  idAttribute: "_id",
+  // idAttribute: "_id",
 
   defaults: {
     bucketName: '',

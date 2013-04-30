@@ -46,7 +46,7 @@ var sendMail = function(req, res, data) {
   smtpTransport.sendMail({
      from: "Alex Paley <a@d.tt>",
      to: req.body.emailList,
-     subject: "Alex just put a new item in your bucket",
+     subject: "Alex just put a new item in your bucket!",
      text: "Download your attachment",
      attachments: [{
        filename: req.files.file.name,
