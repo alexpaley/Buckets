@@ -38,6 +38,7 @@ FormView = Backbone.View.extend({
     this.model.set({bucketName: $('.bucket-name').val(), emails: $('.bucket-email').val()});
     $('.sidebar').toggleClass('inputting');
     this.collection.create({bucketName: this.model.attributes.bucketName, emails: this.model.attributes.emails});
+    console.log(this.model);
   },
 
   removeForm: function() {
@@ -46,7 +47,6 @@ FormView = Backbone.View.extend({
   },
 
   editBucket: function() {
-    console.log('in edit bucket');
     this.model.set({bucketName: this.$('.bucket-name').val(), emails: this.$('.bucket-email').val()});
     this.model.save();
     this.removeForm();

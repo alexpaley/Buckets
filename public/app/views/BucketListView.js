@@ -3,7 +3,7 @@ BucketListView = Backbone.View.extend({
   className: 'sidebar nav nav-list',
 
   initialize: function() {
-    this.emails = {};
+    this.active = {};
 
     this.collection = new BucketList({url:'/'});
     this.formView   = new FormView({model: new Bucket(), collection: this.collection});
@@ -35,20 +35,28 @@ BucketListView = Backbone.View.extend({
   highlightBucket: function(event) {
     var $target = $(event.currentTarget);
 
-    var id = $target.find('a').data('emails');
-
-    if(this.emails[id]) {
-      delete this.emails[id];
+    var id = $target.find('a').data('id');
+    console.log(this.active[id]);
+    if(this.active[id]) {
+      delete this.active[id];
       $target.removeClass('active');
     }
     else {
-      this.emails[id] = true;
+      this.active[id] = true;
       $target.addClass('active');
     }
   },
 
   grabSelectedEmails: function() {
-    return _.toArray(this.emails);
+    var selected = this.active;
+    var emailArray = [];
+
+    this.collection.each(function(model) {
+      if(selected[model.attributes._id]) {
+        emailArray.push(model.attributes.emails);
+      }
+    });
+    return emailArray;
   },
 
   render: function() {

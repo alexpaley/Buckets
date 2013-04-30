@@ -8,7 +8,7 @@ BucketView = Backbone.View.extend({
     this.model.on("change", this.render, this);
   },
 
-  template: _.template("<a href='#' data-emails='<%= emails %>'>" +
+  template: _.template("<a href='#' <% if(typeof _id !== 'undefined') { %> data-id='<%= _id %>'<% } %>>" +
                          "<i class='icon-user icon-white'></i>" + ' ' + '<%= bucketName %>' +
                          "<i class='icon-pencil icon-white'></i>" +
                          "<i class='icon-remove icon-white'></i>" +
@@ -29,6 +29,8 @@ BucketView = Backbone.View.extend({
   },
 
   render: function() {
+    console.log(this.model.attributes);
+    console.log(this.model);
     return this.$el.html(this.template(this.model.attributes));
   }
 });

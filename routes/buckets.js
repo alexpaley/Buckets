@@ -28,6 +28,7 @@ buckets.addBucket = function(req, res) {
       }
 
       console.log('Success: ' + JSON.stringify(result[0]));
+      console.log("addBucket gets to here");
       res.send(result[0]);
     });
   });
