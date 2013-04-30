@@ -15,8 +15,8 @@ var uploads = {};
 var smtpTransport = nodemailer.createTransport("SMTP", {
   service: "Gmail",
   auth: {
-    user: "a@d.tt",
-    pass: "testing123"
+    user: process.env.GMAIL_EMAIL,
+    pass: process.env.GMAIL_PASSWORD
   }
 });
 
@@ -37,6 +37,7 @@ uploads.addFile = function(req, res) {
         res.send(result[0]);
         sendMail(req, res, data);
         console.log(req.files);
+        console.log(process.env);
       });
     });
   });
