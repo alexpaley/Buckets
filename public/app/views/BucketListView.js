@@ -24,7 +24,6 @@ BucketListView = Backbone.View.extend({
   },
 
   appendBucket: function(model) {
-    console.log(this, arguments);
     return this.$el.append(new BucketView({model: model}).render());
   },
 
@@ -57,7 +56,6 @@ BucketListView = Backbone.View.extend({
         emailArray.push(model.attributes.emails);
       }
     });
-    console.log(emailArray);
     return emailArray;
   },
 

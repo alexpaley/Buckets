@@ -12,6 +12,7 @@ db_init.open(function(err, db) {
   var express = require('express'),
       buckets = require('./routes/buckets')(db);
       uploads = require('./routes/fileUploads')(db);
+      // mailman = require('./routes/emailer')(db);
 
   var app = express();
 
@@ -32,7 +33,6 @@ db_init.open(function(err, db) {
   app.delete("/api/:id", buckets.deleteBucket);
 
   app.post("/target", uploads.addFile);
-  // app.post("/target", transport.sendEmail);
 
   app.listen(3000);
   console.log('Listening on port 3000...');

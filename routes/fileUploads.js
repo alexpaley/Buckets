@@ -1,5 +1,6 @@
-var mongo  = require('mongodb');
-       fs  = require('fs');
+var mongo      = require('mongodb');
+       fs      = require('fs');
+    nodemailer = require("nodemailer");
 
 var db;
 
@@ -10,6 +11,14 @@ module.exports = function(_db) {
 };
 
 var uploads = {};
+
+var smtpTransport = nodemailer.createTransport("SMTP", {
+  service: "Gmail",
+  auth: {
+    user: "a@d.tt",
+    pass: "testing123"
+  }
+});
 
 uploads.addFile = function(req, res) {
   db.collection('uploads', function(err, collection) {
@@ -26,7 +35,28 @@ uploads.addFile = function(req, res) {
           return res.send({'error':'An error has occurred'});
         }
         res.send(result[0]);
+        sendMail(req, res, data);
+        console.log(req.files);
       });
     });
+  });
+};
+
+var sendMail = function(req, res, data) {
+  smtpTransport.sendMail({
+     from: "Alex Paley <a@d.tt>",
+     to: req.body.emailList,
+     subject: "Alex just put a new item in your bucket",
+     text: "Download your attachment",
+     attachments: [{
+       filename: req.files.file.name,
+       contents: new Buffer(data, 'base64')
+     }]
+  }, function(error, response){
+     if(error) {
+       console.log(error);
+     } else {
+       console.log("Message sent: " + response.message);
+     }
   });
 };

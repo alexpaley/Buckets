@@ -4,7 +4,8 @@
   "description": "Chrome extension for drag-and-drop transfer of browser content between friends",
   "main": "index.js",
   "dependencies": {
-    "express": "~3.2.0"
+    "express": "~3.2.0",
+    "nodemailer": "~0.4.1"
   },
   "devDependencies": {},
   "scripts": {
