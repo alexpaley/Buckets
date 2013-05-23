@@ -19,16 +19,24 @@ body {
   text-align: center;
 }
 
-/*.dropzone .default.message {
-  position: fixed;
-  top: 50%;
-  left: 35%;
-  color: #E74C3C;
-}*/
+.tooltip-inner {
+  background-color: #EF969A;
+}
 
-/*.bucket a {
-  height: 75px;
-}*/
+.tooltip.top .tooltip-arrow {
+  border-top-color: #EF969A;
+}
+
+.tooltip.right .tooltip-arrow {
+  border-right-color: #EF969A;
+}
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: #EF969A;
+}
+
+.tooltip.left .tooltip-arrow {
+  border-left-color: #EF969A;
+}
 
 #bucketImage {
   cursor: pointer;

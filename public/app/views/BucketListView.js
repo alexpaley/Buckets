@@ -8,22 +8,26 @@ BucketListView = Backbone.View.extend({
     this.collection = new BucketList({url:'/'});
     this.formView   = new FormView({model: new Bucket(), collection: this.collection});
     this.collection.on("add", this.appendBucket, this);
-    this.collection.fetch();
+    this.collection.fetch({context: this.collection}).done(function() {
+      console.log(this.length);
+      if(!this.length) {
+        $('.btn.plus').tooltip({trigger: 'hover', animation: true, placement:'top',
+            title: 'Your first bucket! Name and emails for your group please?'});
+      }
+    });
   },
 
   template: _.template("<li class='nav-header header-font'>Your Buckets</li>" +
                         "<a class='btn plus' href='#''><i class='icon-plus'></i></a>"),
 
   events: {
-    'click .btn.plus': function(e) {
-      this.collection.addNew();
-      this.renderForm();
-    },
+    'click .btn.plus': 'renderForm',
 
     'click .bucket': 'highlightBucket'
   },
 
   appendBucket: function(model) {
+    $('.btn.plus').tooltip('destroy');
     return this.$el.append(new BucketView({model: model}).render());
   },
 

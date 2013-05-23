@@ -1,6 +1,6 @@
 {
   "name": "Buckets",
-  "version": "0.0.0-2",
+  "version": "0.0.0-6",
   "description": "Chrome extension for drag-and-drop transfer of browser content between friends",
   "main": "index.js",
   "dependencies": {

@@ -1,10 +1,6 @@
 FormView = Backbone.View.extend({
 
   initialize: function() {
-    this.collection.on('addNew', function() {
-      this.model = new Bucket();
-    }, this);
-
     this.collection.on('edit', function(model) {
       this.model = model;
       this.model.set('editing', true);
@@ -38,7 +34,13 @@ FormView = Backbone.View.extend({
     this.model.set({bucketName: $('.bucket-name').val(), emails: $('.bucket-email').val()});
     $('.sidebar').toggleClass('inputting');
     this.collection.create({bucketName: this.model.attributes.bucketName, emails: this.model.attributes.emails});
-    console.log(this.model);
+
+    // if(this.collection.length === 1) {
+    //   console.log("in IF STATEMENT");
+    //   $('.bucket a').tooltip({trigger: 'hover', animation: true, placement:'bottom',
+    //     title: 'Click and highlight the buckets you want to send items to!'});
+    //   console.log("end of IF STATEMENT");
+    // }
   },
 
   removeForm: function() {
