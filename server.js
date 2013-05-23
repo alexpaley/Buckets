@@ -30,6 +30,7 @@ var createApp = function(err, db) {
     app.use(express.bodyParser());
   });
 
+  app.use(express.favicon( __root() +'/public/favicon.ico'));
   app.use(express.static( __root() +'/public'));
 
   app.get("/api", buckets.findAll);
