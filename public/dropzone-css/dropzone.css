@@ -47,8 +47,8 @@
 }
 .dropzone .preview .details,
 .dropzone-previews .preview .details {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   position: relative;
   background: #ebebeb;
   padding: 5px;
@@ -64,8 +64,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
 }
 .dropzone .preview .details .size,
 .dropzone-previews .preview .details .size {
@@ -117,7 +117,7 @@
 .dropzone .preview .progress,
 .dropzone-previews .preview .progress {
   position: absolute;
-  top: 100px;
+  top: 120px;
   left: 6px;
   right: 6px;
   height: 6px;
@@ -219,8 +219,8 @@
 }
 .dropzone .preview .details img,
 .dropzone-previews .preview .details img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
 }
 .dropzone .preview.image-preview:hover .details img,
 .dropzone-previews .preview.image-preview:hover .details img {
